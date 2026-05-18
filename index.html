@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zackary Tsui | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --accent-glow: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        /* Hero */
+        header {
+            text-align: center;
+            margin-bottom: 6rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 5rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: var(--border-color);
+        }
+
+        /* Cards and Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+        }
+
+        /* Contact Links */
+        .contact-links a {
+            color: var(--accent-glow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: #8b5cf6;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        
+        <header>
+            <h1>Zackary Tsui</h1>
+            <p>Engineering • CAD Design • AV Technology</p>
+        </header>
+
+        <section id="about">
+            <h2>About & Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>The Profile</h3>
+                    <p>AP & Honors student (2023-2027) with a passion for bridging technology, engineering, and event coordination. Proven ability to handle high-pressure environments, from competitive badminton to live event tech operations.</p>
+                </div>
+                <div class="card">
+                    <h3>Technical Stack</h3>
+                    <p>• CAD Design (Autodesk Fusion)<br>
+                    • 3D Printing & Manufacturing<br>
+                    • DMX Lighting Software (LightKey)<br>
+                    • MATLAB & Machine Learning Onramp</p>
+                </div>
+                <div class="card">
+                    <h3>Leadership</h3>
+                    <p>• Sophomore Class Council Events Coordinator<br>
+                    • STEM Marine Pollution Project Leader<br>
+                    • Volunteer Teacher & Office TA</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects & Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Portable Computer Desk Stand</h3>
+                    <p>Designed, 3D modeled via Autodesk Fusion, and manufactured a portable desk stand. Showcased at City Hall Engineering Expo.</p>
+                </div>
+                <div class="card">
+                    <h3>Live AV Tech Operations</h3>
+                    <p>Operate lights and audio for school events, rallies, and tournaments using professional DMX software. Managed crowd control and technical troubleshooting for major events.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>3D Print Technology</h3>
+                    <p>YouScience • Apr 2026</p>
+                </div>
+                <div class="card">
+                    <h3>Manufacturing Technology</h3>
+                    <p>YouScience • Apr 2026</p>
+                </div>
+                <div class="card">
+                    <h3>Mechanical Design 1</h3>
+                    <p>YouScience • May 2026</p>
+                </div>
+                <div class="card">
+                    <h3>Deep Learning Onramp</h3>
+                    <p>MathWorks • Mar 2026</p>
+                </div>
+                <div class="card">
+                    <h3>MATLAB Onramp</h3>
+                    <p>MathWorks • Feb 2026</p>
+                </div>
+                <div class="card">
+                    <h3>Machine Learning Onramp</h3>
+                    <p>MathWorks • Mar 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-links">
+            <h2>Connect & Documents</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                Fremont, CA | <a href="tel:5109364978">510-936-4978</a> | <a href="mailto:zatsui114@gmail.com">zatsui114@gmail.com</a>
+            </p>
+            <div class="btn-group">
+                <a href="#" class="btn">View Resume</a>
+                <a href="#" class="btn">Cover Letter</a>
+                <a href="#" class="btn">LinkedIn</a>
+                <a href="#" class="btn">GitHub</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
