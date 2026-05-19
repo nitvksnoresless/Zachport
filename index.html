@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zackary Tsui | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-main: #ededed;
+            --bg-dark: #050505;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --bg-card-hover: rgba(255, 255, 255, 0.04);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f4f4f5;
             --text-muted: #a1a1aa;
-            --accent-glow: #3b82f6;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
             --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
         }
 
@@ -21,6 +23,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -28,9 +31,12 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
         }
 
-        /* Nav */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -38,9 +44,9 @@
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(10px);
+            gap: 2.5rem;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
         }
@@ -48,8 +54,8 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
@@ -57,89 +63,142 @@
             color: var(--text-main);
         }
 
-        /* Container */
+        /* Main Layout */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 4rem;
         }
 
-        /* Hero */
+        /* Hero Section */
         header {
             text-align: center;
-            margin-bottom: 6rem;
-            animation: fadeIn 1s ease-out;
+            margin-bottom: 8rem;
+            animation: fadeInDown 1s ease-out;
         }
 
         header h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            letter-spacing: -1.5px;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
-        /* Sections */
+        /* Section Typography */
         section {
-            margin-bottom: 5rem;
-            animation: slideUp 1s ease-out;
+            margin-bottom: 7rem;
+            animation: fadeIn 1.2s ease-out;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         h2::after {
             content: '';
             height: 1px;
             flex: 1;
-            background: var(--border-color);
+            background: linear-gradient(90deg, var(--border-color), transparent);
         }
 
-        /* Cards and Grids */
-        .grid {
+        /* Bento Grid System */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2, .span-3 { grid-column: span 1; }
+            header h1 { font-size: 3rem; }
+        }
+
+        /* Cards */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
+            background: var(--bg-card-hover);
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.15);
         }
 
         .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: #fff;
+            font-weight: 600;
         }
 
-        .card p {
+        .card h4 {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p, .card li {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li::before {
+            content: '→';
+            color: var(--accent-purple);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-main);
         }
 
         /* Buttons */
@@ -147,46 +206,66 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
         .btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-primary {
             background: var(--text-main);
             color: var(--bg-dark);
         }
 
-        /* Contact Links */
-        .contact-links a {
-            color: var(--accent-glow);
-            text-decoration: none;
-            transition: color 0.3s;
+        .btn-primary:hover {
+            background: var(--accent-blue);
+            color: #fff;
+            border-color: var(--accent-blue);
         }
-        
-        .contact-links a:hover {
-            color: #8b5cf6;
-            text-decoration: underline;
+
+        /* Contact Details */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-blue);
         }
 
         /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -194,7 +273,8 @@
 
     <nav>
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -203,86 +283,161 @@
         
         <header>
             <h1>Zackary Tsui</h1>
-            <p>Engineering • CAD Design • AV Technology</p>
+            <p>Bridging the gap between engineering design, live technology operations, and community leadership.</p>
+            <div class="btn-group" style="justify-content: center;">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="Resume (2).pdf" target="_blank" class="btn">View Resume</a>
+            </div>
         </header>
 
         <section id="about">
-            <h2>About & Skills</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>The Profile</h3>
-                    <p>AP & Honors student (2023-2027) with a passion for bridging technology, engineering, and event coordination. Proven ability to handle high-pressure environments, from competitive badminton to live event tech operations.</p>
+            <h2>Profile & Education</h2>
+            <div class="bento-grid">
+                <div class="card span-2">
+                    <h4>The Summary</h4>
+                    <h3>Engineering & Tech Enthusiast</h3>
+                    <p>I am an AP and Honors student with a strong technical foundation and a proven track record in high-pressure environments. From executing live event productions to designing 3D models and leading community initiatives, I focus on delivering precise, high-quality results.</p>
                 </div>
                 <div class="card">
-                    <h3>Technical Stack</h3>
-                    <p>• CAD Design (Autodesk Fusion)<br>
-                    • 3D Printing & Manufacturing<br>
-                    • DMX Lighting Software (LightKey)<br>
-                    • MATLAB & Machine Learning Onramp</p>
-                </div>
-                <div class="card">
-                    <h3>Leadership</h3>
-                    <p>• Sophomore Class Council Events Coordinator<br>
-                    • STEM Marine Pollution Project Leader<br>
-                    • Volunteer Teacher & Office TA</p>
+                    <h4>Education</h4>
+                    <h3>Irvington High School</h3>
+                    <p>AP and Honor Program</p>
+                    <p>Class of 2023 - 2027</p>
+                    <div class="tags">
+                        <span class="tag">Fremont, CA</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects">
-            <h2>Projects & Experience</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Portable Computer Desk Stand</h3>
-                    <p>Designed, 3D modeled via Autodesk Fusion, and manufactured a portable desk stand. Showcased at City Hall Engineering Expo.</p>
+        <section id="experience">
+            <h2>Experience & Projects</h2>
+            <div class="bento-grid">
+                
+                <div class="card span-2">
+                    <h4>Leadership & Event Management</h4>
+                    <h3>Events Coordinator (SCC)</h3>
+                    <ul>
+                        <li>Successfully planned "Winter Bonding", a massive gathering of 80+ students featuring highly coordinated activities and logistics.</li>
+                        <li>Orchestrated events throughout Homecoming week, including managing dress-up days and leading a council all-nighter.</li>
+                    </ul>
                 </div>
+
                 <div class="card">
-                    <h3>Live AV Tech Operations</h3>
-                    <p>Operate lights and audio for school events, rallies, and tournaments using professional DMX software. Managed crowd control and technical troubleshooting for major events.</p>
+                    <h4>Technical Operations</h4>
+                    <h3>Live AV Technician</h3>
+                    <p>Execute lighting and audio engineering for school events, fundraisers, and homecoming rallies.</p>
+                    <div class="tags">
+                        <span class="tag">LightKey</span>
+                        <span class="tag">DMX</span>
+                        <span class="tag">Sound Design</span>
+                    </div>
+                </div>
+
+                <div class="card span-2">
+                    <h4>Engineering & Design</h4>
+                    <h3>CAD & Manufacturing Projects</h3>
+                    <ul>
+                        <li><strong>Portable Computer Desk Stand:</strong> Designed, 3D modeled via Autodesk Fusion, and manufactured a portable desk stand. Showcased at the City Hall Engineering Expo.</li>
+                        <li><strong>Marine Pollution Project:</strong> Led a high school STEM initiative presenting the effects of marine pollution via digital design and physical mediums.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Autodesk Fusion</span>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Canva</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Community Support</h4>
+                    <h3>Volunteer Work (90+ Hrs)</h3>
+                    <ul>
+                        <li><strong>Badminton Tournament (72 Hrs):</strong> Led AV tech, website troubleshooting, and crowd control.</li>
+                        <li><strong>Chinese School (12 Hrs):</strong> Substitute teacher and Office TA assisting with administration.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards & Honors</h2>
+            <div class="bento-grid">
+                <div class="card">
+                    <h4>Athletics</h4>
+                    <h3>Competitive Badminton</h3>
+                    <ul>
+                        <li>1st Place - 2025 Logan Frosh Boys Doubles</li>
+                        <li>2nd Place - 2025 Irvington Frosh Boys Doubles</li>
+                        <li>3rd Place - 2025 Logan Frosh Mixed Doubles</li>
+                        <li>2nd Place - 2024 Bay Badminton E Mixed Doubles</li>
+                        <li>2-Time MVAL Qualifier</li>
+                    </ul>
+                </div>
+                <div class="card span-2">
+                    <h4>Arts & Performance</h4>
+                    <h3>Piano Excellence</h3>
+                    <ul>
+                        <li>2024 SHSD PA National Diploma Award</li>
+                        <li>1st Place - Helen Wang Studios PA</li>
+                        <li>2025 PC Audition Award</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Demonstrates extreme dedication, long-term focus, and the ability to perform flawlessly under pressure.</p>
                 </div>
             </div>
         </section>
 
         <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="grid">
+            <h2>Industry Certifications</h2>
+            <div class="bento-grid">
                 <div class="card">
+                    <h4>YouScience</h4>
                     <h3>3D Print Technology</h3>
-                    <p>YouScience • Apr 2026</p>
+                    <p>Issued: April 30, 2026</p>
                 </div>
                 <div class="card">
+                    <h4>YouScience</h4>
                     <h3>Manufacturing Technology</h3>
-                    <p>YouScience • Apr 2026</p>
+                    <p>Issued: April 30, 2026</p>
                 </div>
                 <div class="card">
+                    <h4>YouScience</h4>
                     <h3>Mechanical Design 1</h3>
-                    <p>YouScience • May 2026</p>
+                    <p>Issued: May 12, 2026</p>
                 </div>
                 <div class="card">
-                    <h3>Deep Learning Onramp</h3>
-                    <p>MathWorks • Mar 2026</p>
-                </div>
-                <div class="card">
-                    <h3>MATLAB Onramp</h3>
-                    <p>MathWorks • Feb 2026</p>
-                </div>
-                <div class="card">
+                    <h4>MathWorks</h4>
                     <h3>Machine Learning Onramp</h3>
-                    <p>MathWorks • Mar 2026</p>
+                    <p>Issued: March 10, 2026</p>
+                </div>
+                <div class="card">
+                    <h4>MathWorks</h4>
+                    <h3>Deep Learning Onramp</h3>
+                    <p>Issued: March 5, 2026</p>
+                </div>
+                <div class="card">
+                    <h4>MathWorks</h4>
+                    <h3>MATLAB Onramp</h3>
+                    <p>Issued: February 17, 2026</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-links">
+        <section id="contact">
             <h2>Connect & Documents</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
-                Fremont, CA | <a href="tel:5109364978">510-936-4978</a> | <a href="mailto:zatsui114@gmail.com">zatsui114@gmail.com</a>
-            </p>
-            <div class="btn-group">
-                <a href="#" class="btn">View Resume</a>
-                <a href="#" class="btn">Cover Letter</a>
-                <a href="#" class="btn">LinkedIn</a>
-                <a href="#" class="btn">GitHub</a>
+            <div class="card span-3">
+                <div class="contact-info">
+                    <a href="mailto:zatsui114@gmail.com">📧 zatsui114@gmail.com</a>
+                    <a href="tel:5109364978">📱 510-936-4978</a>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted);">📍 Fremont, California</p>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="Resume (2).pdf" target="_blank" class="btn btn-primary">Open Resume PDF</a>
+                    <a href="CoverLetter.pdf" target="_blank" class="btn">Cover Letter</a>
+                    <a href="#" class="btn">LinkedIn</a>
+                    <a href="#" class="btn">GitHub</a>
+                </div>
             </div>
         </section>
 
