@@ -141,6 +141,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -184,12 +186,13 @@
             font-weight: bold;
         }
 
-        /* Tags */
+        /* Tags and Small Links */
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1.5rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
         }
 
         .tag {
@@ -199,6 +202,14 @@
             border-radius: 20px;
             font-size: 0.8rem;
             color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .tag.link-tag:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
+            color: #fff;
         }
 
         /* Buttons */
@@ -330,7 +341,7 @@
                     <div class="tags">
                         <span class="tag">LightKey</span>
                         <span class="tag">DMX</span>
-                        <span class="tag">Sound Design</span>
+                        <span class="tag">Audio Tech</span>
                     </div>
                 </div>
 
@@ -394,31 +405,49 @@
                     <h4>YouScience</h4>
                     <h3>3D Print Technology</h3>
                     <p>Issued: April 30, 2026</p>
+                    <div class="tags">
+                        <a href="Zackary Tsui_3D Print Technology_04302026.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h4>YouScience</h4>
                     <h3>Manufacturing Technology</h3>
                     <p>Issued: April 30, 2026</p>
+                    <div class="tags">
+                        <a href="Zackary Tsui_Manufacturing Technology_04302026.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h4>YouScience</h4>
                     <h3>Mechanical Design 1</h3>
                     <p>Issued: May 12, 2026</p>
+                    <div class="tags">
+                        <a href="Zackary Tsui_Mechanical Design 1_05122026.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h4>MathWorks</h4>
                     <h3>Machine Learning Onramp</h3>
                     <p>Issued: March 10, 2026</p>
+                    <div class="tags">
+                        <a href="onramp certificate.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h4>MathWorks</h4>
                     <h3>Deep Learning Onramp</h3>
                     <p>Issued: March 5, 2026</p>
+                    <div class="tags">
+                        <a href="deep learning.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h4>MathWorks</h4>
                     <h3>MATLAB Onramp</h3>
                     <p>Issued: February 17, 2026</p>
+                    <div class="tags">
+                        <a href="matlab onramp.pdf" target="_blank" class="tag link-tag">View Certificate ↗</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -434,7 +463,6 @@
                 
                 <div class="btn-group">
                     <a href="Resume (2).pdf" target="_blank" class="btn btn-primary">Open Resume PDF</a>
-                    <a href="CoverLetter.pdf" target="_blank" class="btn">Cover Letter</a>
                     <a href="#" class="btn">LinkedIn</a>
                     <a href="#" class="btn">GitHub</a>
                 </div>
